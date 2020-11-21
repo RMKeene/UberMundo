@@ -1,0 +1,56 @@
+﻿syntax = "proto3";
+package ShareServer;
+
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "ShareServer";
+
+message uid {
+  fixed64 msi = 1;
+  fixed64 lsi = 2;
+}
+
+// Outer envelope for all packets.  
+// A packet it then a series of messages.
+message PPacket {
+  uint64 inner_message_count = 1;
+  bytes buf = 2;
+}
+
+message PPacketHead {
+  uint32 messageId = 1;
+}
+
+message PLocation {
+  float X = 1;
+  float Y = 2;
+  float Z = 3;
+}
+
+message PVelocity {
+  float X = 1;
+  float Y = 2;
+  float Z = 3;
+}
+
+message PRotation {
+  float Roll = 1;
+  float Pitch = 2;
+  float Yaw = 3;
+}
+
+message PThingDataFull {
+  string asset_name = 1;
+  PLocation location = 2;
+  PRotation rotation = 3;
+}
+
+message PWorldRequest {
+  bytes uid = 1;
+}
+
+message PWorldDataFull {
+  uid uid = 1;
+  string WorldName = 2;
+  float gravity = 3;
+  repeated PThingDataFull things = 14;    
+}

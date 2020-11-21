@@ -1,0 +1,25 @@
+{
+	"T": [{
+			"X": [1541.213134765625, -565.83758544921875, 273.69546508789063, 0, -6.7691612243652344, 2.6768407821655273],
+			"A": [{
+					"S": "AlphaPrime",
+					"L": "Destination World Name",
+					"U": "DestWorldName",
+					"I": 0,
+					"F": 0,
+					"T": 0
+				}, {
+					"S": "",
+					"L": "Portal Number",
+					"U": "PortalNumber",
+					"I": 0,
+					"F": 0,
+					"T": 1
+				}
+			],
+			"G": "F250613C4FE22CD50055D1935C039C66",
+			"C": "/Game/DefaultObjects/PortalOne.PortalOne"
+		}
+	],
+	"V": "SHR 00001"
+}

@@ -1,0 +1,34 @@
+{
+	"menu": [{
+			"type": "action",
+			"label": "Load",
+			"event": "LoadTest"
+		}, {
+			"type": "action",
+			"label": "Save",
+			"event": "SaveTest"
+		}, {
+			"type": "action",
+			"label": "First Person Shooter (G)",
+			"event": "ConstantLook"
+		}, {
+			"type": "action",
+			"label": "RPG Camera (G)",
+			"event": "HoldToLook"
+		}, {
+			"type": "menu",
+			"label": "Things",
+			"menu":
+			[{
+					"type": "thing",
+					"label": "Cube",
+					"class": "BasicCube_C"
+				}, {
+					"type": "thing",
+					"label": "Portal",
+					"class": "PortalOne_C"
+				}
+			]
+		}
+	]
+}
