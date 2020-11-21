@@ -1,2 +1,3 @@
-# UberMundo
-IjijiGames UberMundo
+# UberMundo™
+A shared world game.
+IjijiGames™
