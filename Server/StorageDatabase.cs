@@ -68,6 +68,7 @@ namespace UberMundo
                 }
 
                 worldData = File.ReadAllBytes(fname);
+                //string utfString = Encoding.UTF8.GetString(worldData, 0, worldData.Length);
                 if (debugMessages)
                 {
                     if (worldData.Length > 2000000)
