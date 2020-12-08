@@ -23,6 +23,7 @@ namespace UberMundo
         /// </summary>
         public readonly int WorldID;
 
+        // Range 0 to 100
         public int WotToSee = 10;
         public int OwningPlayerId = 0;
         public int WorldVersion = 1;

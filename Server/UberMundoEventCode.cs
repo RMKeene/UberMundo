@@ -2,6 +2,7 @@
 {
     /// <summary>
     /// Single byte packet codes. P2S is Player to Server, S2P is Server to Player.
+    /// Note that P2P messages are over in the client blueprints ServerTCPConnection.
     /// </summary>
     public enum UberMundoEventCode
     {

@@ -57,7 +57,7 @@ namespace UberMundo
             Debug.Assert(steamID != null);
             Debug.Assert(steamID.Length == 8);
 
-            // Note: Onver in the Blueprint on UE4
+            // Note: Over in the Blueprint on UE4
             // Dummy Steam ID for PIE mode. 0xFF01010100000000 hexadecimal = 18374969058454929408 unsigned decimal
             // Little-Endian so it is 00 00 00 00 01 01 01 FF byte order in the steamID byte array of the Player.
             // Intentionaly uses the high bits FF to test for sign problems.
