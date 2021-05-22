@@ -7,7 +7,7 @@
     public enum UberMundoEventCode
     {
         /// <summary>
-        /// On connecting the player send only their Steam ID and nothing else. Only valid for Steam based clients.
+        /// On connecting the player send only their Steam ID and nothing else. 
         /// If the player has never been seen before, they get created and given a unique int UbermundoId.
         /// This message does not tell which World they are in.
         /// </summary>

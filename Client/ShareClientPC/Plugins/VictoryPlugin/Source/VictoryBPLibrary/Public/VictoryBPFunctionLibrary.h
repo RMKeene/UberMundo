@@ -396,7 +396,7 @@ class VICTORYBPLIBRARY_API UVictoryBPFunctionLibrary : public UBlueprintFunction
 		{
 			return nullptr;
 		}
-		NewRenderTarget2D->ClearColor = FLinearColor::White;
+		NewRenderTarget2D->ClearColor = ClearColor;
 		NewRenderTarget2D->TargetGamma = Gamma;
 		NewRenderTarget2D->InitAutoFormat(Width, Height);
 		return NewRenderTarget2D;
@@ -447,6 +447,10 @@ class VICTORYBPLIBRARY_API UVictoryBPFunctionLibrary : public UBlueprintFunction
 	/** Obtain a listing of all SaveGame file names that were saved using the Blueprint Save Game system. */
 	UFUNCTION(BlueprintPure, Category = "Victory BP Library|File IO")
 	static void SaveGameObject_GetAllSaveSlotFileNames(TArray<FString>& FileNames);
+
+	/** Obtain the last SaveGame file that was saved  using the Blueprint Save Game system. */
+	UFUNCTION(BlueprintPure, Category = "Victory BP Library|File IO")
+	static void SaveGameObject_GetMostRecentSaveSlotFileName(FString& FileName, bool& bFound);
 
 	/** Returns false if the new file could not be created. The folder path must be absolute, such as C:\Users\Self\Documents\YourProject\MyPics. You can use my other Paths nodes to easily get absolute paths related to your project! <3 Rama */
 	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|Screenshots", meta=(Keywords="High resolution"))
@@ -1190,11 +1194,11 @@ class VICTORYBPLIBRARY_API UVictoryBPFunctionLibrary : public UBlueprintFunction
 
 	/** Saves text to filename of your choosing, make sure include whichever file extension you want in the filename, ex: SelfNotes.txt . Make sure to include the entire file path in the save directory, ex: C:\MyGameDir\BPSavedTextFiles */
 	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|File IO")
-	static bool FileIO__SaveStringTextToFile(FString SaveDirectory, FString JoyfulFileName, FString SaveText, bool AllowOverWriting = false);
+	static bool FileIO__SaveStringTextToFile(FString SaveDirectory, FString JoyfulFileName, FString SaveText, bool AllowOverWriting = false, bool AllowAppend = false);
 
 	/** Saves multiple Strings to filename of your choosing, with each string on its own line! Make sure include whichever file extension you want in the filename, ex: SelfNotes.txt . Make sure to include the entire file path in the save directory, ex: C:\MyGameDir\BPSavedTextFiles */
 	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|File IO")
-	static bool FileIO__SaveStringArrayToFile(FString SaveDirectory, FString JoyfulFileName, TArray<FString> SaveText, bool AllowOverWriting = false);
+	static bool FileIO__SaveStringArrayToFile(FString SaveDirectory, FString JoyfulFileName, TArray<FString> SaveText, bool AllowOverWriting = false, bool AllowAppend = false);
 
 
 	/** Obtain an Array of Actors Rendered Recently. You can specifiy what qualifies as "Recent" in seconds. */
@@ -1517,11 +1521,11 @@ class VICTORYBPLIBRARY_API UVictoryBPFunctionLibrary : public UBlueprintFunction
 	static bool Victory_SavePixels(const FString& FullFilePath,int32 Width, int32 Height, const TArray<FLinearColor>& ImagePixels, bool SaveAsBMP, bool sRGB, FString& ErrorString);
 
 	/** This will modify the original T2D to remove sRGB and change compression to VectorDisplacementMap to ensure accurate pixel reading. -Rama*/
-	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|Load Texture From File",meta=(Keywords="create image png jpg jpeg bmp bitmap ico icon exr icns", DeprecatedFunction, DeprecationMessage="This function will not work until I figure out how to update it to 4.25, if you need it urgently, please post in my ue4 forum thread for this plugin"))
+	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|Load Texture From File",meta=(Keywords="create image png jpg jpeg bmp bitmap ico icon exr icns"))//, DeprecatedFunction, DeprecationMessage="This function will not work until I figure out how to update it to 4.25, if you need it urgently, please post in my ue4 forum thread for this plugin"))
 	static bool Victory_GetPixelFromT2D(UTexture2D* T2D, int32 X, int32 Y, FLinearColor& PixelColor);
 
 	/** This will modify the original T2D to remove sRGB and change compression to VectorDisplacementMap to ensure accurate pixel reading. -Rama*/
-	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|Load Texture From File",meta=(Keywords="create image png jpg jpeg bmp bitmap ico icon exr icns", DeprecatedFunction, DeprecationMessage="This function will not work until I figure out how to update it to 4.25, if you need it urgently, please post in my ue4 forum thread for this plugin"))
+	UFUNCTION(BlueprintCallable, Category = "Victory BP Library|Load Texture From File",meta=(Keywords="create image png jpg jpeg bmp bitmap ico icon exr icns"))//, DeprecatedFunction, DeprecationMessage="This function will not work until I figure out how to update it to 4.25, if you need it urgently, please post in my ue4 forum thread for this plugin"))
 	static bool Victory_GetPixelsArrayFromT2D(UTexture2D* T2D, int32& TextureWidth, int32& TextureHeight,TArray<FLinearColor>& PixelArray);
 	
 	/** This will modify the original T2D to remove sRGB and change compression to VectorDisplacementMap to ensure accurate pixel reading. -Rama*/
