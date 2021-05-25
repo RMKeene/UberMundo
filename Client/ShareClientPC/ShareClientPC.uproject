@@ -16,11 +16,11 @@
 	"Plugins": [
 		{
 			"Name": "OnlineSubsystemSteam",
-			"Enabled": true
+			"Enabled": false
 		},
 		{
 			"Name": "SteamSockets",
-			"Enabled": true
+			"Enabled": false
 		},
 		{
 			"Name": "JSONParser",
@@ -39,7 +39,7 @@
 		},
 		{
 			"Name": "TcpSocketPlugin",
-			"Enabled": true,
+			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/462c2952e71c4548ae324cb624c74aa6"
 		},
 		{

@@ -16,11 +16,8 @@ public class ShareClientPC : ModuleRules
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
 
 		// Uncomment if you are using online features
+		// Ubermundo does all its own Steam API control and calls.
 		//PrivateDependencyModuleNames.Add("OnlineSubsystem");
 
-		// To include OnlineSubsystemSteam, add it to the plugins section in your uproject file with the Enabled attribute set to true
-		string steamLibPath = @"SteamSDKFiles\redistributable_bin\win64";
-		PublicSystemLibraryPaths.Add(steamLibPath);
-		PublicAdditionalLibraries.Add("steam_api64.lib");
 	}
 }
