@@ -36,9 +36,15 @@ public:
 		static bool IsSteamRunning();
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "Gets local Steam ID as an 8 byte array."))
+		static bool IsLocalSteamID(int64 id, bool ifNoSteam);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "Gets local Steam ID as an 8 byte array."))
 		static TArray<uint8> GetLocalSteamID();
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (WorldContext = "WorldContextObject", ToolTip = "Gets local Steam ID as an 8 byte array. If in editor, returns a dummy Steam ID for PIE mode. 0xFF01010100000000 hexadecimal = 18374969058454929408 unsigned decimal. Intentionaly uses the high bits FF to test for sign problems."))
 		static TArray<uint8> GetLocalSteamIDSafe(UObject* WorldContextObject);
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "Gets local Steam ID as an Int64."))
+		static int64 GetLocalSteamIDInt64();
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (WorldContext = "WorldContextObject", ToolTip = "Gets local Steam ID as an Int64. If in editor, returns a dummy Steam ID for PIE mode. 0xFF01010100000000 hexadecimal = 18374969058454929408 unsigned decimal. Intentionaly uses the high bits FF to test for sign problems."))
+		static int64 GetLocalSteamIDSafeInt64(UObject* WorldContextObject);
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "SteamUser()->GetSteamName()"))
 		static FString GetLocalSteamName();
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "SteamUser()->GetSteamName()"))

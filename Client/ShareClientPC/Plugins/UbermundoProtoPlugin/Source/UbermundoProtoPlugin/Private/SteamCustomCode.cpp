@@ -72,6 +72,15 @@ DEFINE_LOG_CATEGORY(UberMundoSteamLog)
 		return SteamAPI_IsSteamRunning();
 	}
 
+	bool USteamCustomCode::IsLocalSteamID(int64 id, bool ifNoSteam) {
+		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamID"));
+		if (!SteamAPI_IsSteamRunning() || SteamUser() == nullptr) {
+			return ifNoSteam;
+		}
+		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamID 0x%llX"), SteamUser()->GetSteamID().ConvertToUint64());
+		return SteamUser()->GetSteamID().ConvertToUint64() == (uint64)id;
+	}
+
 	TArray<uint8> USteamCustomCode::GetLocalSteamID() {
 		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamID"));
 		if (!SteamAPI_IsSteamRunning() || SteamUser() == nullptr) {
@@ -101,6 +110,39 @@ DEFINE_LOG_CATEGORY(UberMundoSteamLog)
 			}
 			UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamIDSafe 0x%llX"), SteamUser()->GetSteamID().ConvertToUint64());
 			return ToBytes(SteamUser()->GetSteamID().ConvertToUint64());
+		}
+
+	}
+	
+	int64 USteamCustomCode::GetLocalSteamIDInt64() {
+		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamIDInt64"));
+		if (!SteamAPI_IsSteamRunning() || SteamUser() == nullptr) {
+			return 0;
+		}
+		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamIDInt64 0x%llX"), SteamUser()->GetSteamID().ConvertToUint64());
+		return (int64)SteamUser()->GetSteamID().ConvertToUint64();
+	}
+
+	int64 USteamCustomCode::GetLocalSteamIDSafeInt64(UObject* WorldContextObject) {
+		UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamIDSafeInt64"));
+
+		if (!WorldContextObject)
+			return 0xFF01010100000000ULL;
+
+		UWorld* const World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::ReturnNull);
+		if (!World)
+			return 0xFF01010100000000ULL;
+
+		if (World->WorldType == EWorldType::PIE) {
+
+			return 0xFF01010100000000ULL;
+		}
+		else {
+			if (!SteamAPI_IsSteamRunning() || SteamUser() == nullptr) {
+				return 0;
+			}
+			UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("GetLocalSteamIDSafeInt64 0x%llX"), SteamUser()->GetSteamID().ConvertToUint64());
+			return (int64)SteamUser()->GetSteamID().ConvertToUint64();
 		}
 
 	}
