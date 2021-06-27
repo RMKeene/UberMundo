@@ -1,7 +1,9 @@
 // Copyright Bahnda 2020, All rights reserved.
 
-// This is the low level inerface to the World Block Server.
-// It is styled as a file system, with open, close, read, write of text and/or binary and/or other objects
+// This is the low level interface to the World Block Data.
+// Each player owns their data and it resides in the file system on their machine. (Or possibly a 
+// network shared file system like DropBox).
+// It is styled as an async file system, with open, close, read, write of text and/or binary and/or other objects
 // in the future.
 
 #pragma once

@@ -47,10 +47,9 @@ extern "C" void SteamAPIDebugTextHook(int nSeverity, const char* pchDebugText)
 bool USteamCustomCode::InitSteam() {
 	UE_LOG(UberMundoSteamLog, Display, TEXT("Starting Steam"));
 
-	bool ret = SteamAPI_Init();
-	if (!ret) {
+	if (!SteamAPI_Init()) {
 		UE_LOG(UberMundoSteamLog, Warning, TEXT("Steam Init failed"));
-		return ret;
+		return false;
 	}
 
 	UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("Setup P2P Callbacks"));
@@ -58,7 +57,7 @@ bool USteamCustomCode::InitSteam() {
 	UE_LOG(UberMundoSteamLog, VeryVerbose, TEXT("Hooking Message Hook"));
 	SteamClient()->SetWarningMessageHook(&SteamAPIDebugTextHook);
 	UE_LOG(UberMundoSteamLog, Warning, TEXT("Steam Init OK"));
-	return ret;
+	return true;
 }
 
 bool USteamCustomCode::ShutdownSteam() {
