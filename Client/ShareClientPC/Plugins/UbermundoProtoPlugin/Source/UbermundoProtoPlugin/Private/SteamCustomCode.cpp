@@ -325,3 +325,20 @@ TArray<uint8> USteamCustomCode::ToBytes(uint64 i) {
 
 	return t;
 }
+
+int USteamCustomCode::GetFriendCount(EFriendFlagsUM iFriendFlags) {
+	return SteamFriends()->GetFriendCount(iFriendFlags);
+}
+
+int64 USteamCustomCode::GetFriendByIndex(int idx, EFriendFlagsUM iFriendFlags) {
+	return (int64)SteamFriends()->GetFriendByIndex(idx, iFriendFlags).ConvertToUint64();
+}
+
+FString USteamCustomCode::GetFriendPersonalName(int64 steamId) {
+	return FString(SteamFriends()->GetFriendPersonaName(CSteamID((uint64)steamId)));
+}
+
+EPersonaStateUM USteamCustomCode::GetFriendPersonaState(int64 steamId) {
+	return (EPersonaStateUM)SteamFriends()->GetFriendPersonaState(CSteamID((uint64)steamId));
+}
+
