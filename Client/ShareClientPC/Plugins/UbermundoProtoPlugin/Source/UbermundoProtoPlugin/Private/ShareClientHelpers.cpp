@@ -3,6 +3,8 @@
 
 #include "ShareClientHelpers.h"
 
+#include "WorldDefinitionStruct.h"
+
 void UShareClientHelpers::GetGuidBytes(FGuid guid, uint8& B0, uint8& B1, uint8& B2, uint8& B3,
 	uint8& B4, uint8& B5, uint8& B6, uint8& B7,
 	uint8& B8, uint8& B9, uint8& B10, uint8& B11,
