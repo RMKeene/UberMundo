@@ -328,7 +328,7 @@ TArray<uint8> USteamCustomCode::ToBytes(uint64 i) {
 
 int USteamCustomCode::GetFriendCount(EFriendFlagsUM iFriendFlags) {
 	if (SteamFriends() == NULL)
-		return 0;
+		return -2;
 	int i = SteamFriends()->GetFriendCount(iFriendFlags);
 	return i;
 }

@@ -122,7 +122,7 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "ShareSteam", meta = (ToolTip = "Get the account type bits of the steam ID. The unique account ID, lower 32 bits of staemID."))
 		static int GetSteamIDAccountID(int64 steamID);
 
-	UFUNCTION(BlueprintCallable, Category = "ShareSteam|Friends", meta = (ToolTip = "Get a steam user's friends list size."))
+	UFUNCTION(BlueprintCallable, Category = "ShareSteam|Friends", meta = (ToolTip = "Get a steam user's friends list size. -1 is not logged in, -2 is steam not initialized."))
 		static int GetFriendCount(EFriendFlagsUM iFriendFlags);
 	UFUNCTION(BlueprintCallable, Category = "ShareSteam|Friends", meta = (ToolTip = "Get a steam user's friends list friend SteamID."))
 		static int64 GetFriendByIndex(int idx, EFriendFlagsUM iFriendFlags);
