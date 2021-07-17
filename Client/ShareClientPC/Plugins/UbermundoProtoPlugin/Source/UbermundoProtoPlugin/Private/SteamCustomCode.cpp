@@ -327,21 +327,29 @@ TArray<uint8> USteamCustomCode::ToBytes(uint64 i) {
 }
 
 int USteamCustomCode::GetFriendCount(EFriendFlagsUM iFriendFlags) {
+	if (SteamFriends() == NULL)
+		return 0;
 	int i = SteamFriends()->GetFriendCount(iFriendFlags);
 	return i;
 }
 
 int64 USteamCustomCode::GetFriendByIndex(int idx, EFriendFlagsUM iFriendFlags) {
+	if (SteamFriends() == NULL)
+		return 0;
 	int64 i = SteamFriends()->GetFriendByIndex(idx, iFriendFlags).ConvertToUint64();
 	return i;
 }
 
 FString USteamCustomCode::GetFriendPersonalName(int64 steamId) {
+	if (SteamFriends() == NULL)
+		return FString("No Steam");
 	FString s = FString(SteamFriends()->GetFriendPersonaName(CSteamID((uint64)steamId)));
 	return s;
 }
 
 EPersonaStateUM USteamCustomCode::GetFriendPersonaState(int64 steamId) {
+	if (SteamFriends() == NULL)
+		return EPersonaStateUM::EPersonaStateOfflineUM;
 	EPersonaStateUM i = (EPersonaStateUM)SteamFriends()->GetFriendPersonaState(CSteamID((uint64)steamId));
 	return (EPersonaStateUM)i;
 }
