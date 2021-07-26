@@ -5,7 +5,7 @@
 UENUM(BlueprintType)
 enum EUbermundoPacketCodes {
 	/// <summary>
-	/// If this packet is received, do nothing.
+	/// If this packet is received, send back a Pong packet.
 	/// </summary>
 	UBERMUNDOP2P_Ping UMETA(DisplayName = "Ping"),
 	/// <summary>
@@ -14,11 +14,11 @@ enum EUbermundoPacketCodes {
 	UBERMUNDOP2P_Keepalive UMETA(DisplayName = "KeepAlive"),
 	UBERMUNDOP2P_KeepAliveResponse UMETA(DisplayName = "KeepAliveResponse"),
 	/// <summary>
-	/// A player just connected to this client.
+	/// A player just connected to this client. Send the world state back.
 	/// </summary>
 	UBERMUNDOP2P_PlayerConnected UMETA(DisplayName = "PlayerConnected"),
 	/// <summary>
-	/// A player left his client.
+	/// A player left this client.
 	/// </summary>
 	UBERMUNDOP2P_PlayerDisconnected UMETA(DisplayName = "PlayerDisconnected"),
 	/// <summary>
@@ -39,4 +39,10 @@ enum EUbermundoPacketCodes {
 	/// This client is receiving the player's known other players WOT data.
 	/// </summary>
 	UBERMUNDOP2P_PlayerWOT UMETA(DisplayName = "PlayerWOT"),
+
+	/// <summary>
+	/// If this packet is received, do nothing. Sent as a response to a Ping.
+	/// </summary>
+	UBERMUNDOP2P_Pong UMETA(DisplayName = "Pong"),
+
 };
